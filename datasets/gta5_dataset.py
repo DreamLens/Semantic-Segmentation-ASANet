@@ -35,3 +35,12 @@ class GTA5DataSet(data.Dataset):
                 "lbl": label_file,
                 "name": name
             })
+
+    def __len__(self):
+        return len(self.files)
+
+    def __getitem__(self, index):
+        datafiles = self.files[index]
+        name = datafiles["name"]
+        image = Image.open(datafiles["img"]).convert("RGB")
+   
