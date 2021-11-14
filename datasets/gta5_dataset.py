@@ -24,4 +24,8 @@ class GTA5DataSet(data.Dataset):
             self.img_ids = self.img_ids * \
                 int(np.ceil(float(max_iters) / len(self.img_ids)))
         self.id_to_trainid = {7: 0, 8: 1, 11: 2, 12: 3, 13: 4, 17: 5,
-                              19: 6, 20: 7, 21: 
+                              19: 6, 20: 7, 21: 8, 22: 9, 23: 10, 24: 11, 25: 12,
+                              26: 13, 27: 14, 28: 15, 31: 16, 32: 17, 33: 18}
+        self.files = []
+        for name in self.img_ids:
+            img_file = osp.join(self.root,
