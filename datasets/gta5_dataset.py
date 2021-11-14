@@ -43,4 +43,9 @@ class GTA5DataSet(data.Dataset):
         datafiles = self.files[index]
         name = datafiles["name"]
         image = Image.open(datafiles["img"]).convert("RGB")
-   
+        label = Image.open(datafiles["lbl"])
+        if self.random_crop:
+            img_w, img_h = image.size
+            crop_w, crop_h = self.img_size
+            if img_h < crop_h or img_w < crop_w:
+                image = image.resize(self
