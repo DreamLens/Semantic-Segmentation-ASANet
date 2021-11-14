@@ -28,4 +28,10 @@ class GTA5DataSet(data.Dataset):
                               26: 13, 27: 14, 28: 15, 31: 16, 32: 17, 33: 18}
         self.files = []
         for name in self.img_ids:
-            img_file = osp.join(self.root,
+            img_file = osp.join(self.root, "images/%s" % name)
+            label_file = osp.join(self.root, "labels/%s" % name)
+            self.files.append({
+                "img": img_file,
+                "lbl": label_file,
+                "name": name
+            })
