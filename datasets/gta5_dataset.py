@@ -48,4 +48,9 @@ class GTA5DataSet(data.Dataset):
             img_w, img_h = image.size
             crop_w, crop_h = self.img_size
             if img_h < crop_h or img_w < crop_w:
-                image = image.resize(self
+                image = image.resize(self.img_size, Image.BICUBIC)
+                label = label.resize(self.img_size, Image.NEAREST)
+            else:
+                h_off = random.randint(0, img_h - crop_h)
+                w_off = random.randint(0, img_w - crop_w)
+             
