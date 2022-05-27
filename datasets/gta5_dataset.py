@@ -57,4 +57,8 @@ class GTA5DataSet(data.Dataset):
                 label = label.crop((w_off, h_off, w_off+crop_w, h_off+crop_h))
         else:
             image = image.resize(self.img_size, Image.BICUBIC)
-            labe
+            label = label.resize(self.img_size, Image.NEAREST)
+        image = np.asarray(image, np.float32)
+        image = image[:, :, ::-1]
+        label = np.asarray(label, np.float32)
+        # re-assign labels to 
