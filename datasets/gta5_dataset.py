@@ -61,4 +61,10 @@ class GTA5DataSet(data.Dataset):
         image = np.asarray(image, np.float32)
         image = image[:, :, ::-1]
         label = np.asarray(label, np.float32)
-        # re-assign labels to 
+        # re-assign labels to match the format of Cityscapes
+        label_copy = 255 * np.ones(label.shape, dtype=np.float32)
+        for k, v in self.id_to_trainid.items():
+            label_copy[label == k] = v
+
+        size = image.shape[:2]
+        if self.ra
