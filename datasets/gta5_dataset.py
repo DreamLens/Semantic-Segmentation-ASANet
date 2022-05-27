@@ -53,4 +53,8 @@ class GTA5DataSet(data.Dataset):
             else:
                 h_off = random.randint(0, img_h - crop_h)
                 w_off = random.randint(0, img_w - crop_w)
-             
+                image = image.crop((w_off, h_off, w_off+crop_w, h_off+crop_h))
+                label = label.crop((w_off, h_off, w_off+crop_w, h_off+crop_h))
+        else:
+            image = image.resize(self.img_size, Image.BICUBIC)
+            labe
