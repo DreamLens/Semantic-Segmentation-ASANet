@@ -67,4 +67,10 @@ class GTA5DataSet(data.Dataset):
             label_copy[label == k] = v
 
         size = image.shape[:2]
-        if self.ra
+        if self.random_mirror:
+            flip = np.random.choice(2)*2 - 1
+            image = image[:, ::flip, :]
+            label_copy = label_copy[:, ::flip]
+        if self.norm:
+            image = image / 255.0
+            image 
