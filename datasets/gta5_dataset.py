@@ -73,4 +73,8 @@ class GTA5DataSet(data.Dataset):
             label_copy = label_copy[:, ::flip]
         if self.norm:
             image = image / 255.0
-            image 
+            image -= np.array([0.485, 0.456, 0.406])
+            image = image / np.array([0.229, 0.224, 0.225])
+        else:
+            image = image - np.array([122.67892, 116.66877, 104.00699])
+        image = image.transpose((2, 0, 1)).astype(np.float32)
