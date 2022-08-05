@@ -78,3 +78,4 @@ class GTA5DataSet(data.Dataset):
         else:
             image = image - np.array([122.67892, 116.66877, 104.00699])
         image = image.transpose((2, 0, 1)).astype(np.float32)
+        return image.copy(), label_copy.copy(), np.array(size), name
