@@ -33,4 +33,16 @@ RESTORE_FROM = 'pretrained/'
 CLASS_NAMES = [
     'road', 'sidewalk', 'building', 'wall',
     'fence', 'pole', 'light', 'sign',
-    'vegetation', 'terrain', 'sky', 'per
+    'vegetation', 'terrain', 'sky', 'person',
+    'rider', 'car', 'truck', 'bus', 'train',
+    'motocycle', 'bicycle'
+]
+
+
+def get_arguments():
+    """Parse all the arguments provided from the CLI.
+
+    Returns:
+      A list of parsed arguments.
+    """
+    parser = argparse.ArgumentParser(des
