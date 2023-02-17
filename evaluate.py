@@ -45,4 +45,8 @@ def get_arguments():
     Returns:
       A list of parsed arguments.
     """
-    parser = argparse.ArgumentParser(des
+    parser = argparse.ArgumentParser(description="DeepLabLFOV Network")
+    parser.add_argument("--backbone", type=str, default=BACKBONE,
+                        help=".")
+    parser.add_argument("--data-dir", type=str, default=DATA_DIRECTORY,
+                        
