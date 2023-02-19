@@ -55,4 +55,7 @@ def get_arguments():
     parser.add_argument("--log-dir", type=str, default=LOG_DIR)
     parser.add_argument("--list-path", type=str, default=DATA_LIST_PATH,
                         help="Path to the file listing the images in the dataset.")
-    parser.add_a
+    parser.add_argument("--ignore-label", type=int, default=IGNORE_LABEL,
+                        help="The index of the label to ignore during the training.")
+    parser.add_argument("--num-classes", type=int, default=NUM_CLASSES,
+            
