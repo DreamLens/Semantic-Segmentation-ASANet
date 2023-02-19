@@ -49,4 +49,7 @@ def get_arguments():
     parser.add_argument("--backbone", type=str, default=BACKBONE,
                         help=".")
     parser.add_argument("--data-dir", type=str, default=DATA_DIRECTORY,
-                        
+                        help="Path to the directory containing the PASCAL VOC dataset.")
+    parser.add_argument("--img-height", type=int, default=512)
+    parser.add_argument("--img-width", type=int, default=1024)
+    parser.add_argument("--log
