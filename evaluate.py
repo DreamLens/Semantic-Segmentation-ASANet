@@ -52,4 +52,7 @@ def get_arguments():
                         help="Path to the directory containing the PASCAL VOC dataset.")
     parser.add_argument("--img-height", type=int, default=512)
     parser.add_argument("--img-width", type=int, default=1024)
-    parser.add_argument("--log
+    parser.add_argument("--log-dir", type=str, default=LOG_DIR)
+    parser.add_argument("--list-path", type=str, default=DATA_LIST_PATH,
+                        help="Path to the file listing the images in the dataset.")
+    parser.add_a
