@@ -60,4 +60,8 @@ def get_arguments():
     parser.add_argument("--num-classes", type=int, default=NUM_CLASSES,
                         help="Number of classes to predict (including background).")
     parser.add_argument("--restore-from", type=str, default=RESTORE_FROM,
-                        help="Where restore model paramete
+                        help="Where restore model parameters from.")
+    parser.add_argument("--is-mirror", action="store_true",
+                        help="Whether to randomly mirror the inputs during the training.")
+    parser.add_argument("--split", type=str, default='val',
+                  
