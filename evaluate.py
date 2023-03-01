@@ -58,4 +58,6 @@ def get_arguments():
     parser.add_argument("--ignore-label", type=int, default=IGNORE_LABEL,
                         help="The index of the label to ignore during the training.")
     parser.add_argument("--num-classes", type=int, default=NUM_CLASSES,
-            
+                        help="Number of classes to predict (including background).")
+    parser.add_argument("--restore-from", type=str, default=RESTORE_FROM,
+                        help="Where restore model paramete
