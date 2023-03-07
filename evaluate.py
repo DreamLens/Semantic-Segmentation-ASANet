@@ -64,4 +64,10 @@ def get_arguments():
     parser.add_argument("--is-mirror", action="store_true",
                         help="Whether to randomly mirror the inputs during the training.")
     parser.add_argument("--split", type=str, default='val',
-                  
+                        help="Whether to randomly mirror the inputs during the training.")
+    return parser.parse_args()
+
+
+def colorize_mask(mask):
+    # mask: numpy array of the mask
+    palette = [128, 64, 128, 244, 35, 232, 
