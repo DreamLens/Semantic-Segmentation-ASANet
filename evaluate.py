@@ -82,3 +82,9 @@ def colorize_mask(mask):
 
 
 def scale_image(image, scale):
+    _, _, h, w = image.size()
+    scale_h = int(h*scale)
+    scale_w = int(w*scale)
+    image = F.interpolate(image, size=(scale_h, scale_w),
+                          mode='bilinear', align_corners=True)
+    return image
