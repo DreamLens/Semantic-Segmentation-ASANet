@@ -95,4 +95,8 @@ def predict(net, image, output_size, is_mirror=True, scales=[1]):
     outputs = []
     if is_mirror:
         # image_rev = image[:, :, :, ::-1]
-  
+        image_rev = torch.flip(image, dims=[3])
+        for scale in scales:
+            if scale != 1:
+                image_scale = scale_image(image=image, scale=scale)
+                image_rev_scale = scale_image(image=image_rev, s
