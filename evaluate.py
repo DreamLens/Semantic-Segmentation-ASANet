@@ -88,3 +88,11 @@ def scale_image(image, scale):
     image = F.interpolate(image, size=(scale_h, scale_w),
                           mode='bilinear', align_corners=True)
     return image
+
+
+def predict(net, image, output_size, is_mirror=True, scales=[1]):
+    interp = nn.Upsample(size=output_size, mode='bilinear', align_corners=True)
+    outputs = []
+    if is_mirror:
+        # image_rev = image[:, :, :, ::-1]
+  
