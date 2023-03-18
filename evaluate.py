@@ -99,4 +99,10 @@ def predict(net, image, output_size, is_mirror=True, scales=[1]):
         for scale in scales:
             if scale != 1:
                 image_scale = scale_image(image=image, scale=scale)
-                image_rev_scale = scale_image(image=image_rev, s
+                image_rev_scale = scale_image(image=image_rev, scale=scale)
+            else:
+                image_scale = image
+                image_rev_scale = image_rev
+            image_scale = torch.cat([image_scale, image_rev_scale], dim=0)
+            with torch.no_grad():
+                prediction = net(image_sc
