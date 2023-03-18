@@ -105,4 +105,8 @@ def predict(net, image, output_size, is_mirror=True, scales=[1]):
                 image_rev_scale = image_rev
             image_scale = torch.cat([image_scale, image_rev_scale], dim=0)
             with torch.no_grad():
-                prediction = net(image_sc
+                prediction = net(image_scale.cuda())
+                prediction = interp(prediction)
+            prediction_rev = prediction[1, :, :, :].unsqueeze(0)
+            prediction_rev = torch.flip(prediction_rev, dims=[3])
+            prediction = prediction[0, :, :
