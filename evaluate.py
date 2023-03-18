@@ -109,4 +109,11 @@ def predict(net, image, output_size, is_mirror=True, scales=[1]):
                 prediction = interp(prediction)
             prediction_rev = prediction[1, :, :, :].unsqueeze(0)
             prediction_rev = torch.flip(prediction_rev, dims=[3])
-            prediction = prediction[0, :, :
+            prediction = prediction[0, :, :, :].unsqueeze(0)
+            prediction = (prediction + prediction_rev)*0.5
+            outputs.append(prediction)
+        outputs = torch.cat(outputs, dim=0)
+        outputs = torch.mean(outputs, dim=0)
+        outputs = outputs.permute(1, 2, 0)
+    else:
+        for sc
