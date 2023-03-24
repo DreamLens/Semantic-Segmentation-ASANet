@@ -122,4 +122,9 @@ def predict(net, image, output_size, is_mirror=True, scales=[1]):
             else:
                 image_scale = image
             with torch.no_grad():
-                prediction = net(image
+                prediction = net(image_scale.cuda())
+            prediction = interp(prediction)
+            outputs.append(prediction)
+        outputs = torch.cat(outputs, dim=0)
+        outputs = torch.mean(outputs, dim=0)
+        outputs = outputs.permute(1, 2, 0
