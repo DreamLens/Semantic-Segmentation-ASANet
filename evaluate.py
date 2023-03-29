@@ -135,4 +135,11 @@ def predict(net, image, output_size, is_mirror=True, scales=[1]):
 
 def get_confusion_matrix(gt_label, pred_label, class_num):
     """
-    Calcute the confusion matrix by given lab
+    Calcute the confusion matrix by given label and pred
+    :param gt_label: the ground truth label
+    :param pred_label: the pred label
+    :param class_num: the nunber of class
+    :return: the confusion matrix
+    """
+    index = (gt_label * class_num + pred_label).astype('int32')
+    la
