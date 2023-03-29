@@ -147,4 +147,13 @@ def get_confusion_matrix(gt_label, pred_label, class_num):
 
     for i_label in range(class_num):
         for i_pred_label in range(class_num):
-            cur_index = i_label * class_num + i_p
+            cur_index = i_label * class_num + i_pred_label
+            if cur_index < len(label_count):
+                confusion_matrix[i_label,
+                                 i_pred_label] = label_count[cur_index]
+
+    return confusion_matrix
+
+
+def main():
+    """Create the model and s
