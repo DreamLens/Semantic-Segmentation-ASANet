@@ -142,4 +142,9 @@ def get_confusion_matrix(gt_label, pred_label, class_num):
     :return: the confusion matrix
     """
     index = (gt_label * class_num + pred_label).astype('int32')
-    la
+    label_count = np.bincount(index)
+    confusion_matrix = np.zeros((class_num, class_num))
+
+    for i_label in range(class_num):
+        for i_pred_label in range(class_num):
+            cur_index = i_label * class_num + i_p
