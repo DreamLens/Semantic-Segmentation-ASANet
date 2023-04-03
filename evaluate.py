@@ -156,4 +156,10 @@ def get_confusion_matrix(gt_label, pred_label, class_num):
 
 
 def main():
-    """Create the model and s
+    """Create the model and start the evaluation process."""
+    start = timeit.default_timer()
+    args = get_arguments()
+    pprint(vars(args))
+    print("=======================================")
+    print("Use weights:", args.restore_from)
+    h, w = args.img_height, 
