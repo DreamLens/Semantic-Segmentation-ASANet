@@ -168,4 +168,10 @@ def main():
     elif args.backbone == 'vgg':
         model = DeeplabVGG(num_classes=args.num_classes)
     else:
-        model = VGG16_FCN
+        model = VGG16_FCN8s(num_classes=args.num_classes)
+    saved_state_dict = torch.load(args.restore_from)
+    model.load_state_dict(saved_state_dict)
+    model.eval()
+    model.cuda()
+
+    test_loader = cityscapesDataSet(root=args.data_dir, list_path=
