@@ -162,4 +162,10 @@ def main():
     pprint(vars(args))
     print("=======================================")
     print("Use weights:", args.restore_from)
-    h, w = args.img_height, 
+    h, w = args.img_height, args.img_width
+    if args.backbone == 'resnet':
+        model = Deeplab_Res101(num_classes=args.num_classes)
+    elif args.backbone == 'vgg':
+        model = DeeplabVGG(num_classes=args.num_classes)
+    else:
+        model = VGG16_FCN
