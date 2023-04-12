@@ -174,4 +174,8 @@ def main():
     model.eval()
     model.cuda()
 
-    test_loader = cityscapesDataSet(root=args.data_dir, list_path=
+    test_loader = cityscapesDataSet(root=args.data_dir, list_path=args.list_path, set=args.split, img_size=(
+        2048, 1024), norm=False, ignore_label=args.ignore_label)
+    test_loader = DataLoader(test_loader, batch_size=1,
+                             shuffle=False, num_workers=4)
+    
