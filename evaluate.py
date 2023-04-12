@@ -178,4 +178,10 @@ def main():
         2048, 1024), norm=False, ignore_label=args.ignore_label)
     test_loader = DataLoader(test_loader, batch_size=1,
                              shuffle=False, num_workers=4)
-    
+    confusion_matrix = np.zeros((args.num_classes, args.num_classes))
+    pbar = tqdm(enumerate(test_loader))
+    print("len loader:", len(test_loader))
+    confusion_cost = 0
+    for index, batch in pbar:
+        if index % 100 == 0:
+            pri
