@@ -189,3 +189,7 @@ def main():
         image = F.interpolate(image, size=(
             h, w), mode='bilinear', align_corners=True)
         pred = predict(model, image.cuda(), (1024, 2048),
+                       is_mirror=args.is_mirror, scales=[1])
+        # seg_pred = np.asarray(np.argmax(pred, axis=2), dtype=np.uint8)
+        seg_pred = np.asarray(pred, dtype=np.uint8)
+        seg_gt = np.asarray(label[0].numpy(), dtype=np.i
