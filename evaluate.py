@@ -184,4 +184,8 @@ def main():
     confusion_cost = 0
     for index, batch in pbar:
         if index % 100 == 0:
-            pri
+            print('%d processd' % (index))
+        image, label, size, name = batch
+        image = F.interpolate(image, size=(
+            h, w), mode='bilinear', align_corners=True)
+        pred = predict(model, image.cuda(), (1024, 2048),
