@@ -192,4 +192,10 @@ def main():
                        is_mirror=args.is_mirror, scales=[1])
         # seg_pred = np.asarray(np.argmax(pred, axis=2), dtype=np.uint8)
         seg_pred = np.asarray(pred, dtype=np.uint8)
-        seg_gt = np.asarray(label[0].numpy(), dtype=np.i
+        seg_gt = np.asarray(label[0].numpy(), dtype=np.int)
+        ignore_index = seg_gt != 255
+        seg_gt = seg_gt[ignore_index]
+        seg_pred = seg_pred[ignore_index]
+        confusion_start = timeit.default_timer()
+        confusion_matrix += get_confusion_matrix(
+          
