@@ -198,4 +198,10 @@ def main():
         seg_pred = seg_pred[ignore_index]
         confusion_start = timeit.default_timer()
         confusion_matrix += get_confusion_matrix(
-          
+            seg_gt, seg_pred, args.num_classes)
+        confusion_cost += timeit.default_timer() - confusion_start
+    pos = confusion_matrix.sum(1)
+    res = confusion_matrix.sum(0)
+    tp = np.diag(confusion_matrix)
+    pixel_accuracy = tp.sum()/pos.sum()
+   
