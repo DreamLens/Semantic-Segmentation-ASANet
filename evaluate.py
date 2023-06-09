@@ -204,4 +204,8 @@ def main():
     res = confusion_matrix.sum(0)
     tp = np.diag(confusion_matrix)
     pixel_accuracy = tp.sum()/pos.sum()
-   
+    mean_accuracy = (tp/np.maximum(1.0, pos)).mean()
+    IU_array = (tp / np.maximum(1.0, pos + res - tp))
+    mean_IU_19 = round(np.nanmean(IU_array) * 100, 2)
+    mean_IU_16 = round(np.mean(
+        IU_array[[0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 1
