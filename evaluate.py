@@ -208,4 +208,8 @@ def main():
     IU_array = (tp / np.maximum(1.0, pos + res - tp))
     mean_IU_19 = round(np.nanmean(IU_array) * 100, 2)
     mean_IU_16 = round(np.mean(
-        IU_array[[0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 1
+        IU_array[[0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 15, 17, 18]]) * 100, 2)
+    mean_IU_13 = round(
+        np.mean(IU_array[[0, 1, 2, 6, 7, 8, 10, 11, 12, 13, 15, 17, 18]]) * 100, 2)
+    print('Pixel accuracy: %f \n' % pixel_accuracy)
+    print('Mean accuracy: %f \n' % m
