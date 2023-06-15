@@ -212,4 +212,9 @@ def main():
     mean_IU_13 = round(
         np.mean(IU_array[[0, 1, 2, 6, 7, 8, 10, 11, 12, 13, 15, 17, 18]]) * 100, 2)
     print('Pixel accuracy: %f \n' % pixel_accuracy)
-    print('Mean accuracy: %f \n' % m
+    print('Mean accuracy: %f \n' % mean_accuracy)
+    print('Mean IU: %s \n' % str(mean_IU_19))
+    print('16-class IU: %s \n' % str(mean_IU_16))
+    print('13-class IU: %s \n' % str(mean_IU_13))
+    class_iu_dict = {}
+    for class_name, IU in zip(CLASS_NAMES, IU_array):
