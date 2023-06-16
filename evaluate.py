@@ -231,4 +231,11 @@ def main():
     json_obj = json.dumps(
         rst_dict,
         sort_keys=False,
-        indent=4
+        indent=4,
+        separators=(',', ':')
+    )
+    if not os.path.exists(args.log_dir):
+        os.makedirs(args.log_dir)
+    with open(osp.join(args.log_dir, 'result512x1024.txt'), 'a+') as fobj:
+        pprint(json_obj, fobj)
+    end = 
