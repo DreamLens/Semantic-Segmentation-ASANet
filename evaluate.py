@@ -218,3 +218,9 @@ def main():
     print('13-class IU: %s \n' % str(mean_IU_13))
     class_iu_dict = {}
     for class_name, IU in zip(CLASS_NAMES, IU_array):
+        print(class_name, str(round(IU*100, 2)))
+        class_iu_dict[class_name] = str(round(IU*100, 2))
+    rst_dict = {
+        "Weights": args.restore_from,
+        "Mean Accuracy": mean_accuracy,
+        "Mean IoU"
