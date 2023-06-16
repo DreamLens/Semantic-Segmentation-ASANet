@@ -223,4 +223,12 @@ def main():
     rst_dict = {
         "Weights": args.restore_from,
         "Mean Accuracy": mean_accuracy,
-        "Mean IoU"
+        "Mean IoU": str(mean_IU_19),
+        "16-class IoU": str(mean_IU_16),
+        "13-class IoU": str(mean_IU_13),
+        "class IoU": class_iu_dict,
+    }
+    json_obj = json.dumps(
+        rst_dict,
+        sort_keys=False,
+        indent=4
