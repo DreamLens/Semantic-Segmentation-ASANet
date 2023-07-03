@@ -238,4 +238,10 @@ def main():
         os.makedirs(args.log_dir)
     with open(osp.join(args.log_dir, 'result512x1024.txt'), 'a+') as fobj:
         pprint(json_obj, fobj)
-    end = 
+    end = timeit.default_timer()
+    print("Total time:", end-start, 'seconds')
+    print("Cofusion cost:", confusion_cost)
+
+
+if __name__ == '__main__':
+    main()
