@@ -9,4 +9,8 @@ class Classifier_Module(nn.Module):
     def __init__(self, dims_in, dilation_series, padding_series, num_classes):
         super(Classifier_Module, self).__init__()
         self.conv2d_list = nn.ModuleList()
-        for dilation
+        for dilation, padding in zip(dilation_series, padding_series):
+            self.conv2d_list.append(nn.Conv2d(
+                dims_in, num_classes, kernel_size=3, stride=1, padding=padding, dilation=dilation, bias=True))
+
+        for m in self.conv2d_list
