@@ -20,4 +20,12 @@ class Classifier_Module(nn.Module):
         out = self.conv2d_list[0](x)
         for i in range(len(self.conv2d_list)-1):
             out += self.conv2d_list[i+1](x)
-           
+            return out
+
+
+class DeeplabVGG(nn.Module):
+    def __init__(self, num_classes, vgg16_caffe_path=None, pretrained=False):
+        super(DeeplabVGG, self).__init__()
+        vgg = models.vgg16()
+        if pretrained:
+      
