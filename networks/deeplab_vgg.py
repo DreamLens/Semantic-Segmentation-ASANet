@@ -28,4 +28,10 @@ class DeeplabVGG(nn.Module):
         super(DeeplabVGG, self).__init__()
         vgg = models.vgg16()
         if pretrained:
-      
+            print("Loading pretrained model:", vgg16_caffe_path)
+            vgg.load_state_dict(torch.load(vgg16_caffe_path))
+
+        features, classifier = list(vgg.features.children()), list(
+            vgg.classifier.children())
+
+ 
