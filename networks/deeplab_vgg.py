@@ -49,4 +49,12 @@ class DeeplabVGG(nn.Module):
                                       fc6, nn.ReLU(inplace=True), fc7, nn.ReLU(inplace=True)]))
 
         self.classifier = Classifier_Module(
-            1024, [6, 12, 18, 24], [6, 
+            1024, [6, 12, 18, 24], [6, 12, 18, 24], num_classes)
+
+    def forward(self, x):
+        x = self.features(x)
+        x = self.classifier(x)
+        return x
+
+    def optim_parameters(self, args):
+        return self.parameters()
