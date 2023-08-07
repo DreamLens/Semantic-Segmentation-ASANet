@@ -45,4 +45,8 @@ class DeeplabVGG(nn.Module):
         fc6 = nn.Conv2d(512, 1024, kernel_size=3, padding=4, dilation=4)
         fc7 = nn.Conv2d(1024, 1024, kernel_size=3, padding=4, dilation=4)
 
-        self.features = nn.Sequent
+        self.features = nn.Sequential(*([features[i] for i in range(len(features))] + [
+                                      fc6, nn.ReLU(inplace=True), fc7, nn.ReLU(inplace=True)]))
+
+        self.classifier = Classifier_Module(
+            1024, [6, 12, 18, 24], [6, 
