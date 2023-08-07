@@ -40,4 +40,9 @@ class DeeplabVGG(nn.Module):
 
         for i in [23, 25, 27]:
             features[i].dilation = (2, 2)
-     
+            features[i].padding = (2, 2)
+
+        fc6 = nn.Conv2d(512, 1024, kernel_size=3, padding=4, dilation=4)
+        fc7 = nn.Conv2d(1024, 1024, kernel_size=3, padding=4, dilation=4)
+
+        self.features = nn.Sequent
