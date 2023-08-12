@@ -23,4 +23,9 @@ class FCN8s(nn.Module):
         self.pool2 = nn.MaxPool2d(2, stride=2, ceil_mode=True)  # 1/4
 
         # conv3
-        self.conv3_1 = nn.Conv2d(128, 256, 3, padding=1
+        self.conv3_1 = nn.Conv2d(128, 256, 3, padding=1)
+        self.relu3_1 = nn.ReLU(inplace=True)
+        self.conv3_2 = nn.Conv2d(256, 256, 3, padding=1)
+        self.relu3_2 = nn.ReLU(inplace=True)
+        self.conv3_3 = nn.Conv2d(256, 256, 3, padding=1)
+        self.r
