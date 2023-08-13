@@ -44,4 +44,10 @@ class FCN8s(nn.Module):
         self.conv5_1 = nn.Conv2d(512, 512, 3, padding=1)
         self.relu5_1 = nn.ReLU(inplace=True)
         self.conv5_2 = nn.Conv2d(512, 512, 3, padding=1)
-        self.relu5_2 = nn.ReLU
+        self.relu5_2 = nn.ReLU(inplace=True)
+        self.conv5_3 = nn.Conv2d(512, 512, 3, padding=1)
+        self.relu5_3 = nn.ReLU(inplace=True)
+        self.pool5 = nn.MaxPool2d(2, stride=2, ceil_mode=True)  # 1/32
+
+        # fc6
+        self.fc6 = n
