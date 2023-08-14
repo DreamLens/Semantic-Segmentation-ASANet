@@ -68,4 +68,12 @@ class FCN8s(nn.Module):
         self.upscore8 = nn.ConvTranspose2d(
             num_classes, num_classes, 16, stride=8, bias=False)
         self.upscore_pool4 = nn.ConvTranspose2d(
-            nu
+            num_classes, num_classes, 4, stride=2, bias=False)
+
+        self._initialize_weights()
+
+    def _initialize_weights(self):
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                m.weight.data.zero_()
+ 
