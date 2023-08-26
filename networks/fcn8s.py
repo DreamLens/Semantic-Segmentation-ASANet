@@ -76,4 +76,8 @@ class FCN8s(nn.Module):
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
                 m.weight.data.zero_()
- 
+                if m.bias is not None:
+                    m.bias.data.zero_()
+            if isinstance(m, nn.ConvTranspose2d):
+                assert m.kernel_size[0] == m.kernel_size[1]
+                initial_weigh
