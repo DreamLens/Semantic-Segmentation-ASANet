@@ -80,4 +80,9 @@ class FCN8s(nn.Module):
                     m.bias.data.zero_()
             if isinstance(m, nn.ConvTranspose2d):
                 assert m.kernel_size[0] == m.kernel_size[1]
-                initial_weigh
+                initial_weight = self.get_upsampling_weight(
+                    m.in_channels, m.out_channels, m.kernel_size[0])
+                m.weight.data.copy_(initial_weight)
+
+    def get_upsampling_weight(self, in_channels, out_channels, kernel_size):
+        """Make a 2D bilinear kernel suitable for ups
