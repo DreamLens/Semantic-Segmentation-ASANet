@@ -85,4 +85,11 @@ class FCN8s(nn.Module):
                 m.weight.data.copy_(initial_weight)
 
     def get_upsampling_weight(self, in_channels, out_channels, kernel_size):
-        """Make a 2D bilinear kernel suitable for ups
+        """Make a 2D bilinear kernel suitable for upsampling"""
+        factor = (kernel_size + 1) // 2
+        if kernel_size % 2 == 1:
+            center = factor - 1
+        else:
+            center = factor - 0.5
+        og = np.ogrid[:kernel_size, :kernel_size]
+  
