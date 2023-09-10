@@ -92,4 +92,8 @@ class FCN8s(nn.Module):
         else:
             center = factor - 0.5
         og = np.ogrid[:kernel_size, :kernel_size]
-  
+        filt = (1 - abs(og[0] - center) / factor) * \
+               (1 - abs(og[1] - center) / factor)
+        weight = np.zeros((in_channels, out_channels, kernel_size, kernel_size),
+                          dtype=np.float64)
+        w
