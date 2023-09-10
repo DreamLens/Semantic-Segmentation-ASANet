@@ -102,4 +102,11 @@ class FCN8s(nn.Module):
     def forward(self, x, ssl=False, lbl=None):
         h = x
         h = self.relu1_1(self.conv1_1(h))
-        h = self.relu
+        h = self.relu1_2(self.conv1_2(h))
+        h = self.pool1(h)
+
+        h = self.relu2_1(self.conv2_1(h))
+        h = self.relu2_2(self.conv2_2(h))
+        h = self.pool2(h)
+
+        h = self.relu3_1(self.conv3_1(
