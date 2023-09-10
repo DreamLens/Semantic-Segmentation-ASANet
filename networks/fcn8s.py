@@ -96,4 +96,10 @@ class FCN8s(nn.Module):
                (1 - abs(og[1] - center) / factor)
         weight = np.zeros((in_channels, out_channels, kernel_size, kernel_size),
                           dtype=np.float64)
-        w
+        weight[range(in_channels), range(out_channels), :, :] = filt
+        return torch.from_numpy(weight).float()
+
+    def forward(self, x, ssl=False, lbl=None):
+        h = x
+        h = self.relu1_1(self.conv1_1(h))
+        h = self.relu
