@@ -109,4 +109,12 @@ class FCN8s(nn.Module):
         h = self.relu2_2(self.conv2_2(h))
         h = self.pool2(h)
 
-        h = self.relu3_1(self.conv3_1(
+        h = self.relu3_1(self.conv3_1(h))
+        h = self.relu3_2(self.conv3_2(h))
+        h = self.relu3_3(self.conv3_3(h))
+        h = self.pool3(h)
+        pool3 = h  # 1/8
+
+        h = self.relu4_1(self.conv4_1(h))
+        h = self.relu4_2(self.conv4_2(h))
+        h = se
