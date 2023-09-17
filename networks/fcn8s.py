@@ -134,4 +134,12 @@ class FCN8s(nn.Module):
 
         h = self.score_fr(fc7_response)
         h = self.upscore2(h)
-        upscore2 
+        upscore2 = h  # 1/16
+
+        h = self.score_pool4(pool4*0.01)
+        h = h[:, :, 5:5 + upscore2.size()[2], 5:5 + upscore2.size()[3]]
+        score_pool4c = h  # 1/16
+
+        h = upscore2 + score_pool4c  # 1/16
+        h = self.upscore_pool4(h)
+        upscore_pool4 = h  # 1/8
