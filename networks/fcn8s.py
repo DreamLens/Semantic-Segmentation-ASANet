@@ -143,3 +143,11 @@ class FCN8s(nn.Module):
         h = upscore2 + score_pool4c  # 1/16
         h = self.upscore_pool4(h)
         upscore_pool4 = h  # 1/8
+
+        h = self.score_pool3(pool3*0.0001)
+        h = h[:, :,
+              9:9 + upscore_pool4.size()[2],
+              9:9 + upscore_pool4.size()[3]]
+        score_pool3c = h  # 1/8
+
+        h = upscore_pool4 + sco
