@@ -150,4 +150,14 @@ class FCN8s(nn.Module):
               9:9 + upscore_pool4.size()[3]]
         score_pool3c = h  # 1/8
 
-        h = upscore_pool4 + sco
+        h = upscore_pool4 + score_pool3c  # 1/8
+
+        h = self.upscore8(h)
+        h = h[:, :, 31:31 + x.size()[2], 31:31 + x.size()[3]].contiguous()
+
+        if lbl is not None and not ssl:
+            self.loss = self.CrossEntropy2d(h, lbl)
+
+        return h
+
+    def get_parameters(self, b
