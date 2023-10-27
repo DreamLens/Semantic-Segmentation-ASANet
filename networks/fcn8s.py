@@ -160,4 +160,13 @@ class FCN8s(nn.Module):
 
         return h
 
-    def get_parameters(self, b
+    def get_parameters(self, bias=False):
+        import torch.nn as nn
+        modules_skipped = (
+            nn.ReLU,
+            nn.MaxPool2d,
+            nn.Dropout2d,
+            nn.Sequential,
+            FCN8s,
+        )
+        for m in self.modul
