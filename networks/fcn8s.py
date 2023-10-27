@@ -169,4 +169,11 @@ class FCN8s(nn.Module):
             nn.Sequential,
             FCN8s,
         )
-        for m in self.modul
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                if bias:
+                    yield m.bias
+                else:
+                    yield m.weight
+            elif isinstance(m, nn.ConvTranspose2d):
+                # wei
