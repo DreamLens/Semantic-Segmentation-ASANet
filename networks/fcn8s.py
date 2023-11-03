@@ -182,4 +182,9 @@ class FCN8s(nn.Module):
             elif isinstance(m, modules_skipped):
                 continue
             else:
-                raise
+                raise ValueError('Unexpected module: %s' % str(m))
+
+    def adjust_learning_rate(self, args, optimizer, i):
+        optimizer.param_groups[0]['lr'] = args.learning_rate * \
+            (0.1**(int(i/50000)))
+        if len(optimizer.param_groups
