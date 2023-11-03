@@ -187,4 +187,9 @@ class FCN8s(nn.Module):
     def adjust_learning_rate(self, args, optimizer, i):
         optimizer.param_groups[0]['lr'] = args.learning_rate * \
             (0.1**(int(i/50000)))
-        if len(optimizer.param_groups
+        if len(optimizer.param_groups) > 1:
+            optimizer.param_groups[1]['lr'] = args.learning_rate * \
+                (0.1**(int(i/50000))) * 2
+
+    def CrossEntropy2d(self, predict, target, weight=None, size_average=True):
+    
