@@ -176,4 +176,10 @@ class FCN8s(nn.Module):
                 else:
                     yield m.weight
             elif isinstance(m, nn.ConvTranspose2d):
-                # wei
+                # weight is frozen because it is just a bilinear upsampling
+                if bias:
+                    assert m.bias is None
+            elif isinstance(m, modules_skipped):
+                continue
+            else:
+                raise
