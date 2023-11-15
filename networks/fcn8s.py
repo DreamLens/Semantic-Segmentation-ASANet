@@ -192,4 +192,9 @@ class FCN8s(nn.Module):
                 (0.1**(int(i/50000))) * 2
 
     def CrossEntropy2d(self, predict, target, weight=None, size_average=True):
-    
+        assert not target.requires_grad
+        assert predict.dim() == 4
+        assert target.dim() == 3
+        assert predict.size(0) == target.size(
+            0), "{0} vs {1} ".format(predict.size(0), target.size(0))
+        asser
