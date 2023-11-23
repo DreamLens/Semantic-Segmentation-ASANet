@@ -201,4 +201,9 @@ class FCN8s(nn.Module):
             1), "{0} vs {1} ".format(predict.size(2), target.size(1))
         assert predict.size(3) == target.size(
             2), "{0} vs {1} ".format(predict.size(3), target.size(3))
-        n, c, h, w
+        n, c, h, w = predict.size()
+        target_mask = (target >= 0) * (target != 255)
+        target = target[target_mask]
+        if not target.data.dim():
+            return Variable(torch.zeros(1))
+        predict = predict.t
