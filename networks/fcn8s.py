@@ -197,4 +197,8 @@ class FCN8s(nn.Module):
         assert target.dim() == 3
         assert predict.size(0) == target.size(
             0), "{0} vs {1} ".format(predict.size(0), target.size(0))
-        asser
+        assert predict.size(2) == target.size(
+            1), "{0} vs {1} ".format(predict.size(2), target.size(1))
+        assert predict.size(3) == target.size(
+            2), "{0} vs {1} ".format(predict.size(3), target.size(3))
+        n, c, h, w
