@@ -210,4 +210,12 @@ class FCN8s(nn.Module):
         predict = predict[target_mask.view(
             n, h, w, 1).repeat(1, 1, 1, c)].view(-1, c)
         loss = F.cross_entropy(
-            predict, target, weight=weigh
+            predict, target, weight=weight, size_average=size_average)
+        return loss
+
+
+def VGG16_FCN8s(num_classes=21, init_weights=None, restore_from=None):
+    model = FCN8s(num_classes=num_classes)
+    if init_weights is not None:
+        model.load_state_dict(torch.load(
+           
