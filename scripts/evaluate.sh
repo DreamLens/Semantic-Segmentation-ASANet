@@ -8,4 +8,10 @@ CUDA_VISIBLE_DEVICES=0 python evaluate.py --backbone='resnet'\
         --restore-from='pretrained/GTA5ASA_45.10.pth'
 
 CUDA_VISIBLE_DEVICES=0 python evaluate.py --backbone='resnet'\
-        --data-dir='/path/to/cityscapes
+        --data-dir='/path/to/cityscapes' \
+        --list-path='./datasets/cityscapes_list/val.txt' \
+        --log-dir=logs/GTA5ASA_ST \
+        --restore-from='pretrained/GTA5ASA_ST_48.10.pth'
+
+CUDA_VISIBLE_DEVICES=0 python evaluate.py --backbone='resnet'\
+        --data-dir='/path
