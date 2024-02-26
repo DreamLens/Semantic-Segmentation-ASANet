@@ -64,3 +64,39 @@ class CrossEntropy2d(nn.Module):
         loss = F.cross_entropy(
             predict, target, weight=weight, size_average=self.size_average)
         return loss
+
+
+def eightwayASCLoss(probs, size=1):
+    _, _, h, w = probs.size()
+    softmax = F.softmax(probs, dim=1)
+    p = size
+    softmax_pad = F.pad(softmax, [p]*4, mode='replicate')
+    affinity_group = []
+    for st_y in range(0, 2*size+1, size):  # 0, size, 2*size
+        for st_x in range(0, 2*size+1, size):
+            if st_y == size and st_x == size:
+                continue
+            affinity_paired = torch.sum(
+                softmax_pad[:, :, st_y:st_y+h, st_x:st_x+w] * softmax, dim=1)
+            affinity_group.append(affinity_paired.unsqueeze(1))
+    affinity = torch.cat(affinity_group, dim=1)
+    loss = 1.0 - affinity
+    return loss.mean()
+
+
+
+def fourwayASCLoss(probs, size=1):
+    _, _, h, w = probs.size()
+    softmax = F.softmax(probs, dim=1)
+    p = size
+    softmax_pad = F.pad(softmax, [p]*4, mode='replicate')
+    affinity_group = []
+    for st_y in range(0, 2*size+1, size):  # 0, size, 2*size
+        for st_x in range(0, 2*size+1, size):
+            if abs(st_y-st_x) == size:
+                affinity_paired = torch.sum(
+                    softmax_pad[:, :, st_y:st_y+h, st_x:st_x+w] * softmax, dim=1)
+                affinity_group.append(affinity_paired.unsqueeze(1))
+    affinity = torch.cat(affinity_group, dim=1)
+    loss = 1.0 - affinity
+    return loss.mean()

@@ -1,0 +1,1 @@
+#  Affinity Space Adaptation for Semantic Segmentation Across Domains\n---\nPytorch implementation of the pap
