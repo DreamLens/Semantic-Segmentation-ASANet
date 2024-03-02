@@ -1,1 +1,1 @@
-#  Affinity Space Adaptation for Semantic Segmentation Across Domains\n---\nPytorch implementation of the pap
+#  Affinity Space Adaptation for Semantic Segmentation Across Domains\n---\nPytorch implementation of the paper. The objective of this implementation is to resolve the problem of unsupervised domain adaptation (UDA) in semantic segmentation, thereby reaching peak performance on established benchmarks. \n\n## Reference\nIf you find this res
